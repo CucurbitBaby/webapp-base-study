@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>2.2 touch事件的event对象</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box" class="box"></div>
+
+    <script>
+        var boxEl = document.getElementById('box');
+
+        boxEl.addEventListener('touchstart', handleStart, false);
+        boxEl.addEventListener(' ', handleMove, false);
+        boxEl.addEventListener('touchend', handleEnd, false);
+
+        function handleStart(ev) {
+            console.log('touchstart', ev);
+            // console.log(ev.touches, ev.targetTouches, ev.changedTouches);
+            var touch = ev.changedTouches[0];
+
+            // console.log(touch.clientX, touch.clientY);     // 基于可视区距离
+            console.log(touch.pageX, touch.pageY);            // 卷曲头+基于可视区的距离
+            /*
+                changedTouches: TouchList
+                    0: Touch
+                    clientX: 250.00001525878906
+                    clientY: 147.61904907226562
+                    force: 1
+                    identifier: 0
+                    pageX: 250.00001525878906       //这个一组xy比较多
+                    pageY: 147.61904907226562
+                    radiusX: 13.690476417541504     // 
+                    radiusY: 13.690476417541504     // 半径
+                    rotationAngle: 0                // 旋转角度
+                    screenX: 541                    // 屏幕的xy，没啥意义
+                    screenY: 485
+                    target: div#box.box
+                    __proto__: Touch
+                    length: 1
+            */
+        }
+        function handleMove(ev) {
+            console.log('touchmove');
+        }
+        function handleEnd(ev) {
+            console.log('touchend', ev);
+            // console.log(ev.touches, ev.targetTouches, ev.changedTouches);
+        }
+    </script>
+</body>
+</html>
+
+
+<script>
+    
+/*
+event对象
+altKey: false           // 手指按下的时候，是否同时按住了Alt键
+bubbles: isTrusted      // 是否是冒泡
+cancelBubble: false     // 是否取消了冒泡
+cancelable: true        // 可以取消么？
+
+
+changedTouches: TouchList {0: Touch, length: 1} // 类数组对象 发生变化的触摸点
+    // 触摸列表，包括手指的一些信息
+    0: Touch
+    clientX: 221.42857360839844
+    clientY: 105.95238494873047
+    force: 1
+    identifier: 0
+    pageX: 221.42857360839844
+    pageY: 105.95238494873047
+    radiusX: 13.690476417541504
+    radiusY: 13.690476417541504
+    rotationAngle: 0
+    screenX: 517
+    screenY: 450
+    target: div#box.box
+    __proto__: Touch
+    length: 1
+
+composed: true 
+ctrlKey: false
+currentTarget: null
+defaultPrevented: false
+detail: 0
+eventPhase: 0
+isTrusted: true
+metaKey: false
+path: (5) [div#box.box, body, html, document, Window]
+returnValue: true
+shiftKey: false
+sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: true}
+srcElement: div#box.box   // 当前的元素相应的事件
+target: div#box.box
+
+
+targetTouches: TouchList {0: Touch, length: 1}  // 类数组对象 目标触摸点
+    0: Touch
+    clientX: 221.42857360839844
+    clientY: 105.95238494873047
+    force: 1
+    identifier: 0
+    pageX: 221.42857360839844
+    pageY: 105.95238494873047
+    radiusX: 13.690476417541504
+    radiusY: 13.690476417541504
+    rotationAngle: 0
+    screenX: 517
+    screenY: 450
+    target: div#box.box
+    __proto__: Touch
+    length: 1
+
+timeStamp: 6968.130000008387
+
+
+touches: TouchList {0: Touch, length: 1}    // 类数组对象 所有的触摸点
+    0: Touch
+    clientX: 221.42857360839844
+    clientY: 105.95238494873047
+    force: 1
+    identifier: 0
+    pageX: 221.42857360839844
+    pageY: 105.95238494873047
+    radiusX: 13.690476417541504
+    radiusY: 13.690476417541504
+    rotationAngle: 0
+    screenX: 517
+    screenY: 450
+    target: div#box.box
+    __proto__: Touch
+    length: 1
+
+type: "touchstart"        // 当前处于触摸事件的哪个阶段
+view: Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+which: 0
+
+*/
+
+</script>
