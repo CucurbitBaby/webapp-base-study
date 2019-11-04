@@ -11,3 +11,5 @@
 * **04-webapp-events:** 移动端事件
 
 * **05-webapp-detection-debug:** 移动调试和终端检测
+
+* **06-webapp-compatible:** 移动常见问题(兼容性)
