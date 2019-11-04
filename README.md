@@ -9,3 +9,5 @@
 * **03-webapp-screen-adaptation:** 移动端屏幕适配
 
 * **04-webapp-events:** 移动端事件
+
+* **05-webapp-detection-debug:** 移动调试和终端检测

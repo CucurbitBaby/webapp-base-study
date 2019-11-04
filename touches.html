@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>3.2 hammer.js</title>
+    <title>多指触摸</title>
     <style>
+        body {
+            height: 2000px;
+        }
         .box {
             width: 150px;
             height: 150px;
@@ -17,22 +20,16 @@
 
     <div id="box" class="box"></div>
 
-    <script src="js/hammer.min.js"></script>
+    <script src="http://192.168.1.101:1337/vorlon.js"></script>
     <script>
         var boxEl = document.getElementById('box');
 
-        var hammer = new Hammer(boxEl);
-        hammer.on('swipe pan tap doubletap press pinch rotate', function (ev) {
-            // console.log(ev.type);
-            console.log(ev);
-        });
+        boxEl.addEventListener('touchmove', handleMove, false);
 
-        // hammer.on('swipeleft', function (ev) {
-        //     console.log('next');
-        // });
-        // hammer.on('swiperight', function (ev) {
-        //     console.log('prev');
-        // });
+        function handleMove(ev) {
+            console.log('touchmove', ev.touches.length, ev.targetTouches.length, ev.changedTouches.length);
+        }
+        alert(2)
     </script>
 </body>
 </html>
