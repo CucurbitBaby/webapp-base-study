@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-block-inline与inline-block</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<style>
+
+* { margin:0;padding:0; }
+
+
+
+.chunk {
+	width: 100px;
+	height: 100px;
+}
+
+.container {
+	background: #999;
+	height: 400px;	
+	display: flex;	
+	flex-direction: row-reverse;				/*决定主轴的方向*/
+	justify-content: center;						/*项目在主轴上的对齐方式*/
+	align-items: flex-start;						/*项目在交叉轴上的对齐方式*/
+}
+
+.color1 {
+		background-color: brown;
+}
+.color2 {
+		background-color: aqua;
+}
+.color3 {
+		background-color: royalblue;
+}
+
+
+</style>
+
+
+</head>
+<body>
+	
+
+<div class="container">
+	<div class="chunk color1">1</div>
+	<div class="chunk color2">2</div>
+	<div class="chunk color3">3</div>	
+</div>
+
+
+</body>
+</html>
+<script>
+/*
+flex flexible box		flex灵活的盒子/弹性盒子
+flex container			弹性容器
+flex item						容器里面的子元素(项)
+
+1. 父容器display: flex;  所有子元素就失去块级特性(占用整行)了  display:inline-block + float:left
+	 1.1  此时子元素(项)添加display:block;以及无效了
+
+2. 把 box1,box2,box3,空白  改为 box3,box2,box1,空白
+	 2.1	flex-direction: row-reverse  		之后变成了*********空白,box3,box2,box1
+	 2.2	flex-direction: column-reverse	虽然倒叙了但是  是	box3,box2,box1,空白
+	 2.3  为什么会这样呢？		
+	 			因为整个容器高度只有 三个item高，所以column是没有空白的; containerHeight:400px;空白,box3,box2,box1
+
+	
+3. 垂直空白,box3,box2,box1  如何变成  box3,box2,box1,空白 呢？
+	 3.1  为什么是justify-content: flex-end; 因为使用了reverse
+
+4. 主轴和交叉轴, 虽然只有两根轴,但每轴有两个方向(理解一下start的位置和主轴方向)
+
+5. 三个item(垂直排列)在水平上居中，垂直靠上如何实现？
+   5.1  flex-direction: column; justify-content: flex-start; align-items: center;
+
+6. 三个item(书评排列)在水平上居中，垂直靠上如何实现？
+   6.1  flex-direction: column; justify-content: flex-start; align-items:flex-start
+
+7. 150;150px; flex-wrap:wrap-reverse之后, 换行的item有间距 并且还居中了
+	 7.1  缩短容器的height就行了
+
+
+父容器属性
+	flex-direction 	属性决定主轴的方向（即项目的排列方向）  
+			row: 						水平排列(默认)
+			column: 				垂直排列
+			row-reverse: 		水平倒叙排列;
+			column-reverse: 垂直倒叙排列;
+	justify-content 属性定义了项目在主轴上的对齐方式   
+			flex-start: 		左对齐(默认)
+			flex-end: 			右对齐
+			center: 				居中(所有item两边空白一样多)
+			space-between： 两端对齐，项目之间的间隔都相等 
+			space-around:   均相等。所以，项目之间的间隔比项目与(所有项目的头和尾空白)的间隔大一倍
+	align-items 		属性定义项目在交叉轴上如何对齐
+			stretch: 				(默认值)如果项目未设置高度或设为auto，将占满整个容器的高度 ***
+			flex-start: 		交叉轴的起点对齐
+			flex-end: 			交叉轴的终点对齐
+			center: 				交叉轴的中心点对齐
+			baseline: 			项目的第一行文字的基线对齐 ****
+	flex-wrap 			属性默认情况下，项目都排在一条线（又称"轴线"）上
+			nowrap: 				(默认)不换行
+			wrap: 					换行，第一行在上方
+			wrap-reverse: 	换行，第一行在下方
+项目属性
+	..
+
+
+
+*/
+</script>
