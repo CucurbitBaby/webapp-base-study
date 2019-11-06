@@ -35,7 +35,7 @@
         var ratio = 18.75;
         var viewWidth = docEl.getBoundingClientRect().width || window.innerWidth;
 
-        // console.log(viewWidth);
+        // console.log(viewWidth);  750因为缩放了
 
         if (maxWidth && (viewWidth / dpr > maxWidth)) {
             viewWidth = maxWidth * dpr;

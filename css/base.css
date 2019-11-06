@@ -16,7 +16,7 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
-input {
+/*input {
     font-size: 12px;
     border: none;
     background: none;
@@ -31,15 +31,16 @@ input {
 [data-dpr="3"] a,
 [data-dpr="3"] input {
     font-size: 36px;
-}
+}*/
 
+/* a input textare不继承body的font-size*/
 
-/*input {
+body, input, a {
     font-size: 0.6rem;
     border: none;
     background: none;
     outline: none;
-}*/
+}
 
 
 li {
